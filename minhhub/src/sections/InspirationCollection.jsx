@@ -1,26 +1,88 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/modules'; // Import the Pagination module from swiper/modules
 import MinhPray from '../assets/MinhPray.png';
 import MinhShop from '../assets/Minhshop.png';
 import MinhFit from '../assets/MinhFit.png';
 
-
-
 const InspirationCollectionSection = () => {
-  	return (
-    		<div className="w-full relative flex flex-col items-start justify-start text-center text-[32px] text-font-color font-montserrat">
-      			<div className="self-stretch flex flex-col items-center justify-center pt-[60px] px-2.5 pb-0">
-        				<div className="flex flex-col items-center justify-start gap-[35px]">
-          					<b className="self-stretch relative">Inspiration Collection</b>
-          					<div className="self-stretch relative text-[20px] text-font-color1 inline-block h-[30px] shrink-0">Minhs work, inspired by books, wellness, and simplicity, makes life easier.</div>
-        				</div>
-      			</div>
-      			<div className="self-stretch flex flex-col items-center justify-center py-[60px] px-2.5">
-        				<div className="w-[1151px] flex flex-row items-center justify-start gap-[43px]">
-          					<img className="w-[355px] relative rounded-tl-41xl rounded-tr-none rounded-b-none h-[434px] object-cover" alt="" src={MinhPray} />
-          					<img className="w-[355px] relative h-[434px] object-cover" alt="" src={MinhShop} />
-          					<img className="w-[355px] relative rounded-t-none rounded-br-41xl rounded-bl-none h-[434px] object-cover" alt="" src={MinhFit} />
-        				</div>
-      			</div>
-    		</div>);
+  return (
+    <section className="w-full min-h-screen text-center text-[32px] text-font-color font-montserrat py-[60px]">
+      {/* Title Section */}
+      <div className="flex flex-col items-center gap-4">
+        <h2 className="font-bold">Inspiration Collection</h2>
+        <p className="text-[20px] text-font-color">Minh’s work, inspired by books, wellness, and simplicity, makes life easier.</p>
+      </div>
+
+      {/* Swiper for mobile screens */}
+      <div className="w-full lg:hidden">
+        <Swiper
+          spaceBetween={20}
+          pagination={{ clickable: true }}
+          modules={[Pagination]} // Add Pagination module for swiper
+          className="mySwiper"
+        >
+          <SwiperSlide>
+            <div className="w-[355px] mx-auto">
+              <img
+                className="w-full h-[434px] object-cover rounded-tl-41xl rounded-bl-none rounded-br-none"
+                alt="Minh Pray"
+                src={MinhPray}
+              />
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="w-[355px] mx-auto">
+              <img
+                className="w-full h-[434px] object-cover"
+                alt="Minh Shop"
+                src={MinhShop}
+              />
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="w-[355px] mx-auto">
+              <img
+                className="w-full h-[434px] object-cover rounded-tr-none rounded-br-41xl rounded-bl-none"
+                alt="Minh Fit"
+                src={MinhFit}
+              />
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
+
+      {/* Grid for large screens */}
+      <div className="hidden lg:flex container flex-wrap justify-center gap-6 mt-10 px-4">
+        <div className="w-[355px]">
+          <img
+            className="w-full h-[434px] object-cover rounded-tl-41xl rounded-bl-none rounded-br-none"
+            alt="Minh Pray"
+            src={MinhPray}
+          />
+        </div>
+
+        <div className="w-[355px]">
+          <img
+            className="w-full h-[434px] object-cover"
+            alt="Minh Shop"
+            src={MinhShop}
+          />
+        </div>
+
+        <div className="w-[355px]">
+          <img
+            className="w-full h-[434px] object-cover rounded-tr-none rounded-br-41xl rounded-bl-none"
+            alt="Minh Fit"
+            src={MinhFit}
+          />
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default InspirationCollectionSection;
